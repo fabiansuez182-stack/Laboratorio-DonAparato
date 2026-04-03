@@ -1,9 +1,5 @@
 package modelo.DTO;
 
-/**
- * Data Transfer Object para la entidad Usuario.
- * Transporta datos entre la capa de acceso a datos (DAO) y los controladores.
- */
 public class UsuarioDTO {
 
     private int id;
@@ -11,12 +7,11 @@ public class UsuarioDTO {
     private String apellido;
     private int edad;
     private String telefono;
-    private String tipo; // A, B, C, o null (Sin afiliación)
+    private String tipo;
 
     public UsuarioDTO() {
     }
 
-    // Getters y Setters
     public int getId() {
         return id;
     }

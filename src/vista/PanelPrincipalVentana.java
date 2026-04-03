@@ -9,34 +9,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Panel Principal de ventas de DON APARATO.
- * Contiene:
- * - Datos del usuario (precargados, no editables)
- * - Formulario de producto (nombre, precio unitario, cantidad)
- * - 3 botones: Realizar Compra, Mostrar Datos, Limpiar
- * - Panel de resultados con etiquetas (ticket de compra)
- * - Panel de datos del usuario con etiquetas
- */
 public class PanelPrincipalVentana extends JFrame implements ActionListener {
 
     private PanelPrincipalControlador controlador;
 
-    // Campos de datos del usuario (precargados, no editables)
     private JTextField txtNombre, txtApellido, txtEdad, txtTelefono, txtTipo;
-
-    // Campos del producto
     private JTextField txtProducto, txtPrecio, txtCantidad;
-
-    // Botones
     private JButton btnComprar, btnMostrarDatos, btnLimpiar;
 
-    // Panel y etiquetas de resultado de compra (ticket)
     private JPanel panelTicket;
     private JLabel lblTicketUsuario, lblTicketTipo, lblTicketSubtotal;
     private JLabel lblTicketDescuento, lblTicketTotal;
 
-    // Panel y etiquetas para mostrar datos del usuario
     private JPanel panelDatosUsuario;
     private JLabel lblDatoNombre, lblDatoApellido, lblDatoEdad;
     private JLabel lblDatoTelefono, lblDatoTipo;
@@ -60,9 +44,6 @@ public class PanelPrincipalVentana extends JFrame implements ActionListener {
         Font fuenteLabel = new Font("Arial", Font.BOLD, 12);
         Font fuenteCampo = new Font("Arial", Font.PLAIN, 12);
 
-        // ============================
-        // SECCIÓN: Datos del Cliente
-        // ============================
         JPanel panelCliente = new JPanel();
         panelCliente.setBounds(15, 10, 555, 110);
         panelCliente.setLayout(null);
@@ -73,7 +54,6 @@ public class PanelPrincipalVentana extends JFrame implements ActionListener {
         panelCliente.setBackground(Color.WHITE);
         add(panelCliente);
 
-        // Fila 1: Nombre y Apellido
         JLabel lblNombre = new JLabel("Nombre:");
         lblNombre.setFont(fuenteLabel);
         lblNombre.setBounds(15, 25, 70, 20);
@@ -98,7 +78,6 @@ public class PanelPrincipalVentana extends JFrame implements ActionListener {
         txtApellido.setBackground(new Color(233, 236, 239));
         panelCliente.add(txtApellido);
 
-        // Fila 2: Edad, Teléfono, Tipo
         JLabel lblEdad = new JLabel("Edad:");
         lblEdad.setFont(fuenteLabel);
         lblEdad.setBounds(15, 60, 50, 20);
@@ -135,9 +114,6 @@ public class PanelPrincipalVentana extends JFrame implements ActionListener {
         txtTipo.setBackground(new Color(233, 236, 239));
         panelCliente.add(txtTipo);
 
-        // ============================
-        // SECCIÓN: Datos del Producto
-        // ============================
         JPanel panelProducto = new JPanel();
         panelProducto.setBounds(15, 130, 555, 80);
         panelProducto.setLayout(null);
@@ -178,9 +154,6 @@ public class PanelPrincipalVentana extends JFrame implements ActionListener {
         txtCantidad.setFont(fuenteCampo);
         panelProducto.add(txtCantidad);
 
-        // ============================
-        // SECCIÓN: Botones
-        // ============================
         btnComprar = new JButton("Realizar Compra");
         btnComprar.setBounds(15, 220, 170, 35);
         btnComprar.setFont(new Font("Arial", Font.BOLD, 12));
@@ -208,9 +181,6 @@ public class PanelPrincipalVentana extends JFrame implements ActionListener {
         btnLimpiar.addActionListener(this);
         add(btnLimpiar);
 
-        // ============================
-        // SECCIÓN: Ticket de Compra (resultado)
-        // ============================
         panelTicket = new JPanel();
         panelTicket.setBounds(15, 265, 555, 150);
         panelTicket.setLayout(null);
@@ -251,9 +221,6 @@ public class PanelPrincipalVentana extends JFrame implements ActionListener {
         lblTicketTotal.setBounds(15, 125, 400, 20);
         panelTicket.add(lblTicketTotal);
 
-        // ============================
-        // SECCIÓN: Datos del Usuario en etiquetas
-        // ============================
         panelDatosUsuario = new JPanel();
         panelDatosUsuario.setBounds(15, 425, 555, 150);
         panelDatosUsuario.setLayout(null);
@@ -293,9 +260,6 @@ public class PanelPrincipalVentana extends JFrame implements ActionListener {
         panelDatosUsuario.add(lblDatoTipo);
     }
 
-    /**
-     * Carga los datos del usuario logueado en los campos no editables.
-     */
     public void cargarDatosUsuario(UsuarioDTO u) {
         txtNombre.setText(u.getNombre());
         txtApellido.setText(u.getApellido());
@@ -310,10 +274,6 @@ public class PanelPrincipalVentana extends JFrame implements ActionListener {
         }
     }
 
-    /**
-     * Muestra el ticket de compra en etiquetas (según requerimiento).
-     * Incluye: nombre del usuario, tipo, precio total, descuento y precio real.
-     */
     public void mostrarTicket(UsuarioDTO usuario, CompraDTO compra) {
         lblTicketUsuario.setText("Cliente: " + usuario.getNombre() + " " + usuario.getApellido());
 
@@ -341,9 +301,6 @@ public class PanelPrincipalVentana extends JFrame implements ActionListener {
         JOptionPane.showMessageDialog(this, "¡Compra registrada con éxito!");
     }
 
-    /**
-     * Muestra los datos básicos del usuario en etiquetas dentro de un panel.
-     */
     public void mostrarDatosUsuarioEnEtiquetas(UsuarioDTO u) {
         lblDatoNombre.setText("Nombre: " + u.getNombre());
         lblDatoApellido.setText("Apellido: " + u.getApellido());
@@ -370,7 +327,6 @@ public class PanelPrincipalVentana extends JFrame implements ActionListener {
             controlador.mostrarDatosUsuario();
 
         } else if (e.getSource() == btnLimpiar) {
-            // Limpiar formulario de producto
             txtProducto.setText("");
             txtPrecio.setText("");
             txtCantidad.setText("");
@@ -379,10 +335,9 @@ public class PanelPrincipalVentana extends JFrame implements ActionListener {
             panelDatosUsuario.setVisible(false);
 
         } else if (e.getSource() == btnComprar) {
-            // Validar que los campos de producto no estén vacíos
             if (txtProducto.getText().trim().isEmpty() ||
-                txtPrecio.getText().trim().isEmpty() ||
-                txtCantidad.getText().trim().isEmpty()) {
+                    txtPrecio.getText().trim().isEmpty() ||
+                    txtCantidad.getText().trim().isEmpty()) {
                 mostrarMensaje("Los campos del producto se encuentran vacíos.");
                 return;
             }

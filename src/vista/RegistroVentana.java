@@ -7,10 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Ventana de Registro de nuevos usuarios.
- * Contiene campos para: Nombre, Apellido, Edad, Teléfono y Tipo de afiliación.
- */
 public class RegistroVentana extends JFrame implements ActionListener {
 
     private RegistroControlador controlador;
@@ -34,7 +30,6 @@ public class RegistroVentana extends JFrame implements ActionListener {
         Font fuenteLabel = new Font("Arial", Font.BOLD, 12);
         Font fuenteCampo = new Font("Arial", Font.PLAIN, 12);
 
-        // Panel con borde para el formulario
         JPanel panelForm = new JPanel();
         panelForm.setBounds(15, 10, 375, 260);
         panelForm.setLayout(null);
@@ -45,7 +40,6 @@ public class RegistroVentana extends JFrame implements ActionListener {
         panelForm.setBackground(Color.WHITE);
         add(panelForm);
 
-        // Nombre
         JLabel lblNombre = new JLabel("Nombre:");
         lblNombre.setFont(fuenteLabel);
         lblNombre.setBounds(20, 30, 80, 20);
@@ -56,7 +50,6 @@ public class RegistroVentana extends JFrame implements ActionListener {
         txtNombre.setFont(fuenteCampo);
         panelForm.add(txtNombre);
 
-        // Apellido
         JLabel lblApellido = new JLabel("Apellido:");
         lblApellido.setFont(fuenteLabel);
         lblApellido.setBounds(20, 70, 80, 20);
@@ -67,7 +60,6 @@ public class RegistroVentana extends JFrame implements ActionListener {
         txtApellido.setFont(fuenteCampo);
         panelForm.add(txtApellido);
 
-        // Edad
         JLabel lblEdad = new JLabel("Edad:");
         lblEdad.setFont(fuenteLabel);
         lblEdad.setBounds(20, 110, 80, 20);
@@ -78,7 +70,6 @@ public class RegistroVentana extends JFrame implements ActionListener {
         txtEdad.setFont(fuenteCampo);
         panelForm.add(txtEdad);
 
-        // Teléfono
         JLabel lblTelefono = new JLabel("Teléfono:");
         lblTelefono.setFont(fuenteLabel);
         lblTelefono.setBounds(20, 150, 80, 20);
@@ -89,13 +80,12 @@ public class RegistroVentana extends JFrame implements ActionListener {
         txtTelefono.setFont(fuenteCampo);
         panelForm.add(txtTelefono);
 
-        // Tipo de Afiliación (JComboBox)
         JLabel lblTipo = new JLabel("Tipo:");
         lblTipo.setFont(fuenteLabel);
         lblTipo.setBounds(20, 190, 80, 20);
         panelForm.add(lblTipo);
 
-        cmbTipo = new JComboBox<>(new String[]{"Ninguno", "A", "B", "C"});
+        cmbTipo = new JComboBox<>(new String[] { "Ninguno", "A", "B", "C" });
         cmbTipo.setBounds(110, 190, 100, 25);
         cmbTipo.setFont(fuenteCampo);
         panelForm.add(cmbTipo);
@@ -106,7 +96,6 @@ public class RegistroVentana extends JFrame implements ActionListener {
         lblTipoInfo.setBounds(220, 190, 200, 20);
         panelForm.add(lblTipoInfo);
 
-        // Botones
         btnGuardar = new JButton("Guardar");
         btnGuardar.setBounds(55, 290, 140, 35);
         btnGuardar.setFont(new Font("Arial", Font.BOLD, 12));
@@ -140,8 +129,7 @@ public class RegistroVentana extends JFrame implements ActionListener {
                     txtApellido.getText().trim(),
                     txtEdad.getText().trim(),
                     txtTelefono.getText().trim(),
-                    (String) cmbTipo.getSelectedItem()
-            );
+                    (String) cmbTipo.getSelectedItem());
         }
     }
 

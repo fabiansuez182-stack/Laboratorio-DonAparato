@@ -1,9 +1,5 @@
 package modelo.DTO;
 
-/**
- * Data Transfer Object para la entidad Compra.
- * Transporta datos entre la capa de acceso a datos (DAO) y los controladores.
- */
 public class CompraDTO {
 
     private int idCompra;
@@ -18,7 +14,6 @@ public class CompraDTO {
     public CompraDTO() {
     }
 
-    // Getters y Setters
     public int getIdCompra() {
         return idCompra;
     }

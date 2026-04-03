@@ -7,17 +7,8 @@ import java.sql.SQLException;
 import modelo.conexion.Conexion;
 import modelo.DTO.UsuarioDTO;
 
-/**
- * Data Access Object para la tabla 'usuarios'.
- * Contiene las operaciones CRUD con la base de datos.
- */
 public class UsuarioDAO {
 
-    /**
-     * Valida si un usuario existe en la base de datos buscando por nombre.
-     * @param nombreUsuario Nombre ingresado en el login.
-     * @return UsuarioDTO con todos los datos si existe, null si no se encontró.
-     */
     public UsuarioDTO validarLogin(String nombreUsuario) {
         UsuarioDTO usuarioEncontrado = null;
         Connection con = null;
@@ -48,9 +39,12 @@ public class UsuarioDAO {
 
         } finally {
             try {
-                if (rs != null) rs.close();
-                if (ps != null) ps.close();
-                if (con != null) con.close();
+                if (rs != null)
+                    rs.close();
+                if (ps != null)
+                    ps.close();
+                if (con != null)
+                    con.close();
             } catch (SQLException e) {
                 System.out.println("Error al cerrar recursos: " + e.getMessage());
             }
@@ -58,11 +52,6 @@ public class UsuarioDAO {
         return usuarioEncontrado;
     }
 
-    /**
-     * Registra un nuevo usuario en la base de datos.
-     * @param usuario UsuarioDTO con los datos del formulario de registro.
-     * @return "OK" si fue exitoso, o un mensaje de error.
-     */
     public String registrarUsuario(UsuarioDTO usuario) {
         String resultado = "";
         Connection con = null;
@@ -87,8 +76,10 @@ public class UsuarioDAO {
 
         } finally {
             try {
-                if (ps != null) ps.close();
-                if (con != null) con.close();
+                if (ps != null)
+                    ps.close();
+                if (con != null)
+                    con.close();
             } catch (SQLException e) {
                 System.out.println("Error al cerrar recursos: " + e.getMessage());
             }

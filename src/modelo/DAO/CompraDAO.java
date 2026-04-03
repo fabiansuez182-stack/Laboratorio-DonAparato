@@ -6,17 +6,8 @@ import java.sql.SQLException;
 import modelo.conexion.Conexion;
 import modelo.DTO.CompraDTO;
 
-/**
- * Data Access Object para la tabla 'compras'.
- * Registra las compras realizadas en la base de datos.
- */
 public class CompraDAO {
 
-    /**
-     * Inserta una nueva compra en la base de datos.
-     * @param miCompra CompraDTO con todos los datos calculados.
-     * @return "OK" si fue exitoso, o un mensaje de error.
-     */
     public String registrarCompra(CompraDTO miCompra) {
         String resultado = "";
         Connection con = null;
@@ -25,8 +16,8 @@ public class CompraDAO {
         try {
             con = Conexion.getConnection();
             String sql = "INSERT INTO compras (nombre_producto, valor_unitario, cantidad, " +
-                         "total_bruto, descuento_aplicado, total_neto, id_usuario) " +
-                         "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    "total_bruto, descuento_aplicado, total_neto, id_usuario) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             ps = con.prepareStatement(sql);
             ps.setString(1, miCompra.getNombreProducto());
@@ -45,8 +36,10 @@ public class CompraDAO {
 
         } finally {
             try {
-                if (ps != null) ps.close();
-                if (con != null) con.close();
+                if (ps != null)
+                    ps.close();
+                if (con != null)
+                    con.close();
             } catch (SQLException e) {
                 System.out.println("Error al cerrar recursos: " + e.getMessage());
             }
